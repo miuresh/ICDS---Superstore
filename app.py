@@ -3,6 +3,7 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], title = "Superstore Analysis", use_pages = True)
+server = app.server
 
 sidebar = html.Div(
     children = [
@@ -14,11 +15,11 @@ sidebar = html.Div(
 
 app.layout = html.Div(
     children = [
-        dbc.Row(
+        dbc.Col(
             children = [
-                dbc.Col(
+                dbc.Row(
                     children = sidebar,
-                    width = 1
+                
                 ),
                 dbc.Col(
                     children = [
@@ -32,4 +33,4 @@ app.layout = html.Div(
 )
 
 if __name__ == '__main__':
-    app.run(debug = True, use_reloader = True)
+    app.run_server(debug = False, use_reloader = True)
